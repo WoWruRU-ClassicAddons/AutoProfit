@@ -3,4 +3,6 @@
 ## Version: 3.11
 ## SavedVariables: autoProfitExceptions, autoSell, autoSilent
 ## Notes: Automatically sells low quality gray items to the vendor. For the latest version check out: www.gameguidesonline.com. (Under the World of Warcraft menu.)
+## Notes-ruRU: Автоматическая продажа серых вещей.
 AutoProfit.xml
+Localization.lua

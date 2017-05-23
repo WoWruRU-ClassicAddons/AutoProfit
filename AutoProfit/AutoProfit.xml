@@ -67,12 +67,12 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 					<OnEnter>
 						rotrate = .6;
 						GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
-						GameTooltip:SetText("Sell Junk Items");
+						GameTooltip:SetText(AUTOPROFIT_BUTTON);
 						AutoProfit_Calculate();
 						if (totalProfit > 0) then
 							SetTooltipMoney(GameTooltip, totalProfit);
 						else
-							GameTooltip:AddLine("You have no junk items in your inventory.", 1.0, 1.0, 1.0, 1);
+							GameTooltip:AddLine(AUTOPROFIT_BUTTON_TOOLTIP, 1.0, 1.0, 1.0, 1);
 							rotrate = 0;
 						end
 						

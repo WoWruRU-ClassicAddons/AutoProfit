@@ -11,7 +11,6 @@ autoSilent = 0;
 totalProfit = 0;
 rotation = 0;
 rotrate = 0;
-AUTOPROFIT_VERSION = "v3.11 June 28th, 2006";
 
 function SellJunk()
 
@@ -29,7 +28,7 @@ function SellJunk()
 				if (quality == 0) then
 					local result = AutoSeller_ProcessLink(GetContainerItemLink(bag, slot));
 					if (result > 0) then
-					if (autoSilent == 0) then DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Sold " .. GetContainerItemLink(bag, slot), 0.0, .8, 1); end
+					if (autoSilent == 0) then DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_SOLD.. GetContainerItemLink(bag, slot), 0.0, .8, 1); end
 					PickupContainerItem(bag, slot);
 					MerchantItemButton_OnClick("LeftButton");
 					end
@@ -38,7 +37,7 @@ function SellJunk()
 				if (quality == -1) then
 					local linkcolor = AutoSeller_ProcessLink(GetContainerItemLink(bag, slot));
 					if (linkcolor == 1) then
-					if (autoSilent == 0) then DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Sold " .. GetContainerItemLink(bag, slot), 0.0, .8, 1); end
+					if (autoSilent == 0) then DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_SOLD.. GetContainerItemLink(bag, slot), 0.0, .8, 1); end
 						PickupContainerItem(bag, slot);
 						MerchantItemButton_OnClick("LeftButton");
 					end
@@ -113,29 +112,23 @@ function AutoProfit_SlashCmd(msg)
 	--No switch statement in Lua? Lots of ugly if's to follow.
 		
 	if (msg == "") then
-		DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r " .. AUTOPROFIT_VERSION .. " by Jason Allen.", 0.0, .80, 1);
-		DEFAULT_CHAT_FRAME:AddMessage("|c00bfffff/autoprofit [item link]|r: Add or remove an item to the exception list.", 0.0, .80, 1);
-		DEFAULT_CHAT_FRAME:AddMessage("|c00bfffff/autoprofit list|r: List all items on your exception list.", 0.0, .80, 1);
-		DEFAULT_CHAT_FRAME:AddMessage("|c00bfffff/autoprofit [number]|r: Remove item at that location in your exception list.", 0.0, .80, 1);
-		DEFAULT_CHAT_FRAME:AddMessage("|c00bfffff/autoprofit purge|r: Remove all items from your exception list.", 0.0, .80, 1);
-		DEFAULT_CHAT_FRAME:AddMessage("|c00bfffff/autoprofit silent|r: Toggles sale reporting on and off.", 0.0, .80, 1);
-		DEFAULT_CHAT_FRAME:AddMessage("|c00bfffff/autoprofit auto|r: Toggles automatic selling on and off.", 0.0, .80, 1);
-		DEFAULT_CHAT_FRAME:AddMessage("For the latest version and advanced usage visit |c00bfffffwww.gameguidesonline.com|r (Under the World of Warcraft mods menu.)", 0.0, .80, 1);
+		DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_TITLE..AUTOPROFIT_VERSION..AUTOPROFIT_AUTHOR, 0.0, .80, 1);
+		DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_HELP_MSG1, 0.0, .80, 1);
+		DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_HELP_MSG2, 0.0, .80, 1);
+		DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_HELP_MSG3, 0.0, .80, 1);
+		DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_HELP_MSG4, 0.0, .80, 1);
+		DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_HELP_MSG5, 0.0, .80, 1);
+		DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_HELP_MSG6, 0.0, .80, 1);
 		return;
 	end
 	
-	if (msg == "purge") then
-		autoProfitExceptions = { };
-		DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Deleted all exceptions.", 0.0, .80, 1);
-		return;
-	end
 	
 	if (msg == "auto") then
 		if (autoSell == 0) then
-			DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Automatic selling on.", 0.0, .80, 1);
+			DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_AUTOSELL_ON, 0.0, .80, 1);
 			autoSell = 1;
 		else
-			DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Automatic selling off.", 0.0, .80, 1);
+			DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_AUTOSELL_OFF, 0.0, .80, 1);
 			autoSell = 0;
 			AutosellButton:Show();
 			TreasureModel:Show();
@@ -145,10 +138,10 @@ function AutoProfit_SlashCmd(msg)
 	
 	if (msg == "silent") then
 		if (autoSilent == 0) then
-			DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Sale reporting off.", 0.0, .80, 1);
+			DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_AUTOREPORT_OFF, 0.0, .80, 1);
 			autoSilent = 1;
 		else
-			DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Sale reporting on.", 0.0, .80, 1);
+			DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_AUTOREPORT_ON, 0.0, .80, 1);
 			autoSilent = 0;
 		end
 		return;
@@ -156,13 +149,19 @@ function AutoProfit_SlashCmd(msg)
 	
 	if (msg == "list") then
 		if (table.getn(autoProfitExceptions) > 0) then
-			DEFAULT_CHAT_FRAME:AddMessage("AutoProfit Exceptions: ", 0.0, .80, 1);
+			DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_EXPENTIONS, 0.0, .80, 1);
 			for i=1,table.getn(autoProfitExceptions) do
 				DEFAULT_CHAT_FRAME:AddMessage("[|c00bfffff" .. i .. "|r] " .. autoProfitExceptions[i], 0.0, .80, 1);
 			end
 		else
-			DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Your exceptions list is empty.", 0.0, .80, 1);
+			DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_EXPENTIONS_EMPTY, 0.0, .80, 1);
 		end
+		return;
+	end
+	
+	if (msg == "purge") then
+		autoProfitExceptions = { };
+		DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_EXPENTIONS_DELETE, 0.0, .80, 1);
 		return;
 	end
 	
@@ -173,7 +172,7 @@ function AutoProfit_SlashCmd(msg)
 		if (tonumber(msg) > table.getn(autoProfitExceptions)) then 
 			return;
 		else
-			DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Removed " .. autoProfitExceptions[tonumber(msg)] .. " from exceptions list.", 0.0, .8, 1);
+			DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_EXPENTIONS_REMOVED..autoProfitExceptions[tonumber(msg)]..AUTOPROFIT_EXPENTIONSLIST, 0.0, .8, 1);
 			table.remove(autoProfitExceptions, tonumber(msg));
 			return;
 		end
@@ -188,7 +187,7 @@ function AutoProfit_SlashCmd(msg)
 			for i=1,table.getn(autoProfitExceptions) do
 				
 				if (msg == autoProfitExceptions[i]) then
-					DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Removed " .. autoProfitExceptions[i] .. " from exceptions list.", 0.0, .8, 1);
+					DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_EXPENTIONS_REMOVED..autoProfitExceptions[i]..AUTOPROFIT_EXPENTIONSLIST, 0.0, .8, 1);
 					table.remove(autoProfitExceptions, i);
 					removed = 1;
 				end
@@ -197,11 +196,8 @@ function AutoProfit_SlashCmd(msg)
 		
 		if (removed == 0) then
 			table.insert(autoProfitExceptions, msg);
-			DEFAULT_CHAT_FRAME:AddMessage("|c00bfffffAutoProfit|r: Added " .. msg .. " to exceptions list.", 0.0, .8, 1);
+			DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_EXPENTIONS_ADDED.. msg ..AUTOPROFIT_EXPENTIONSLIST2, 0.0, .8, 1);
 		end
-	
-	
-
 end
 
 
@@ -214,8 +210,8 @@ function AutoSeller_ProcessLink(link)
 	for color, item, name in string.gfind(link, "|c(%x+)|Hitem:(%d+:%d+:%d+:%d+)|h%[(.-)%]|h|r") do
 		
 		--This prevents Dark Moon Faire items from being sold to the vendor.
-		if ((name == "Small Furry Paw") or (name == "Torn Bear Pelt") or (name == "Soft Bushy Tail") or (name == "Vibrant Plume") or (name == "Evil Bat Eye") 
-			or (name == "Glowing Scorpid Blood")) then
+		if ((name == AUTOPROFIT_SMALL_FURRY_PAW) or (name == AUTOPROFIT_TORN_BEAR_PELT) or (name == AUTOPROFIT_SOFT_BUSHY_TAIL) or (name == AUTOPROFIT_VIBRANT_PLUME) or (name == AUTOPROFIT_EVIL_BAT_EYE) 
+			or (name == AUTOPROFIT_GLOWING_SCORPID_BLOOD)) then
 			return 0;
 		end		
 		
