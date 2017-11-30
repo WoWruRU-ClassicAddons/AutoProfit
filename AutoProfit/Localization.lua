@@ -2,9 +2,6 @@
 if ( GetLocale() == "ruRU" ) then
 --Russian localization by Lichery
 
-	AUTOPROFIT_VERSION = "v3.11 June 28th, 2006";
-	AUTOPROFIT_TITLE = "|c00bfffffAutoProfit|r "
-	AUTOPROFIT_AUTHOR = " by Jason Allen."
 	AUTOPROFIT_SOLD = "|c00bfffffAutoProfit|r: Продано "
 	AUTOPROFIT_HELP_MSG1 = "|c00bfffff/autoprofit [item link]|r: Добавить или удалить предмет в список исключений."
 	AUTOPROFIT_HELP_MSG2 = "|c00bfffff/autoprofit list|r: Показать список исключений."
@@ -27,20 +24,10 @@ if ( GetLocale() == "ruRU" ) then
 	AUTOPROFIT_EXPENTIONSLIST2 = " в список исключений."
 	AUTOPROFIT_EXPENTIONS_DELETE = "|c00bfffffAutoProfit|r: Все исключения удалены."
 	
-	AUTOPROFIT_SMALL_FURRY_PAW = "Маленькая мохнатая лапка"
-	AUTOPROFIT_TORN_BEAR_PELT = "Разорванная шкура медведя"
-	AUTOPROFIT_SOFT_BUSHY_TAIL = "Мягкий пушистый хвост"
-	AUTOPROFIT_VIBRANT_PLUME = "Радужное перо"
-	AUTOPROFIT_EVIL_BAT_EYE = "Глаз злобной летучей мыши"
-	AUTOPROFIT_GLOWING_SCORPID_BLOOD = "Светящаяся кровь скорпида"
-	
 	AUTOPROFIT_BUTTON = "Продать все 'серые' предметы"
 	AUTOPROFIT_BUTTON_TOOLTIP = "В вашем инвентаре нет 'серых' предметов."
 
 else
-	AUTOPROFIT_VERSION = "v3.11 June 28th, 2006";
-	AUTOPROFIT_TITLE = "|c00bfffffAutoProfit|r "
-	AUTOPROFIT_AUTHOR = " by Jason Allen."
 	AUTOPROFIT_SOLD = "|c00bfffffAutoProfit|r: Sold "
 	AUTOPROFIT_HELP_MSG1 = "|c00bfffff/autoprofit [item link]|r: Add or remove an item to the exception list."
 	AUTOPROFIT_HELP_MSG2 = "|c00bfffff/autoprofit list|r: List all items on your exception list."
@@ -62,13 +49,6 @@ else
 	AUTOPROFIT_EXPENTIONS_ADDED = "|c00bfffffAutoProfit|r: Added "
 	AUTOPROFIT_EXPENTIONSLIST2 = " to exceptions list."
 	AUTOPROFIT_EXPENTIONS_DELETE = "|c00bfffffAutoProfit|r: Deleted all exceptions."
-	
-	AUTOPROFIT_SMALL_FURRY_PAW = "Small Furry Paw"
-	AUTOPROFIT_TORN_BEAR_PELT = "Torn Bear Pelt"
-	AUTOPROFIT_SOFT_BUSHY_TAIL = "Soft Bushy Tail"
-	AUTOPROFIT_VIBRANT_PLUME = "Vibrant Plume"
-	AUTOPROFIT_EVIL_BAT_EYE = "Evil Bat Eye"
-	AUTOPROFIT_GLOWING_SCORPID_BLOOD = "Glowing Scorpid Blood"
 	
 	AUTOPROFIT_BUTTON = "Sell Junk Items"
 	AUTOPROFIT_BUTTON_TOOLTIP = "You have no junk items in your inventory."

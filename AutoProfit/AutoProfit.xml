@@ -17,24 +17,24 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 			<PlayerModel name="TreasureModel" parent="MerchantBuyBackItem">
                 <Size>
                     <AbsDimension x="32" y="32"/>
-                </Size>
+				</Size>
                 <Anchors>
 					<Anchor point="TOPRIGHT" relativeTo="MerchantFrame">
-                            <Offset>
-                                <AbsDimension x="-40" y="-38"/>
-                            </Offset>
-                        </Anchor>
-                </Anchors>
+						<Offset>
+							<AbsDimension x="-40" y="-38"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
                 <Scripts>
                     <OnLoad>
 						TreasureModel:SetModel("World/Generic/PassiveDoodads/TreasurePiles/GoldPileLarge01.m2");
 						TreasureModel:SetScale(1);
 						TreasureModel:SetPosition(-1, -.5, 0);
 						this:RegisterEvent("MERCHANT_SHOW");
-                    </OnLoad>
+					</OnLoad>
                     <OnUpdate>
 						AutoProfit_RotateModel(arg1);						
-                    </OnUpdate>
+					</OnUpdate>
 					<OnShow>
 						if (autoSell == 1) then 
 							this:Hide(); 
@@ -45,11 +45,11 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 						rotation = 0;
 					</OnShow>
 					<OnEvent>
-						if (autoSell == 1) then SellJunk(); end
+						if (autoSell == 1) then AutoProfit_SellJunk(); end
 					</OnEvent>
-                </Scripts>
-
-            </PlayerModel>
+				</Scripts>
+				
+			</PlayerModel>
 			
 			
 			<Button name="AutosellButton" parent="MerchantBuyBackItem">
@@ -86,13 +86,13 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 					<OnClick>
 						if (totalProfit > 0) then GameTooltip:Hide(); end
 						rotrate = 0;
-						SellJunk();
+						AutoProfit_SellJunk();
 					</OnClick>
 					<OnLoad>
 						AutoProfit_OnLoad();
 					</OnLoad>
 					<OnShow>
-					if (autoSell == 1) then	this:Hide(); end
+						if (autoSell == 1) then	this:Hide(); end
 					</OnShow>
 				</Scripts>
 				<NormalTexture file="Interface\Buttons\UI-Quickslot2">
@@ -101,33 +101,33 @@ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
 					</Size>
 					<Anchors>
 						<Anchor point="CENTER">
-						<Offset>
-							<AbsDimension x="0" y="0"/>
-						</Offset>
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
 						</Anchor>
 					</Anchors>
 				</NormalTexture>
 				<PushedTexture file="Interface\Buttons\UI-Quickslot-Depress">
-								<Size>
+					<Size>
 						<AbsDimension x="40" y="40"/>
 					</Size>
 					<Anchors>
 						<Anchor point="CENTER">
-						<Offset>
-							<AbsDimension x="0" y="0"/>
-						</Offset>
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
 						</Anchor>
 					</Anchors>
 				</PushedTexture>
 				<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD">
-												<Size>
+					<Size>
 						<AbsDimension x="34" y="34"/>
 					</Size>
 					<Anchors>
 						<Anchor point="CENTER">
-						<Offset>
-							<AbsDimension x="0" y="0"/>
-						</Offset>
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
 						</Anchor>
 					</Anchors>
 				</HighlightTexture>

@@ -1,8 +1,9 @@
-## Title: AutoProfit v3.11
 ## Interface: 11200
-## Version: 3.11
-## SavedVariables: autoProfitExceptions, autoSell, autoSilent
+## Title: AutoProfit
 ## Notes: Automatically sells low quality gray items to the vendor. For the latest version check out: www.gameguidesonline.com. (Under the World of Warcraft menu.)
 ## Notes-ruRU: Автоматическая продажа серых вещей.
+## Version: v3.11 June 28th, 2006
+## SavedVariables: autoProfitExceptions, autoSell, autoSilent
+
 AutoProfit.xml
 Localization.lua
