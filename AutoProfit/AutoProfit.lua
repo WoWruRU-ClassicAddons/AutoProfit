@@ -19,11 +19,15 @@ function AutoProfit_OnLoad()
 end
 
 function AutoProfit_SellJunk()
+	local oldTime, newTime
 	for bag = 0, 4 do
 		for slot = 1, GetContainerNumSlots(bag) do
+			oldTime = GetTime()
 			local check = AutoProfit_CheckItem(GetContainerItemLink(bag, slot))
 			if check then
 				if autoSilent == 0 then DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_SOLD.. GetContainerItemLink(bag, slot), 0.0, .8, 1) end
+				newTime = GetTime()
+				while newTime - oldTime < .1 do newTime = GetTime() end -- item sale every 0.1 second
 				UseContainerItem(bag, slot)
 			end
 		end
