@@ -27,7 +27,7 @@ function AutoProfit_SellJunk()
 			if check then
 				if autoSilent == 0 then DEFAULT_CHAT_FRAME:AddMessage(AUTOPROFIT_SOLD.. GetContainerItemLink(bag, slot), 0.0, .8, 1) end
 				newTime = GetTime()
-				while newTime - oldTime < .1 do newTime = GetTime() end -- item sale every 0.1 second
+				while newTime - oldTime < .01 do newTime = GetTime() end -- item sale every 0.01 second
 				UseContainerItem(bag, slot)
 			end
 		end
